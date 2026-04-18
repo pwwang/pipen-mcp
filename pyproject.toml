@@ -1,0 +1,56 @@
+[project]
+name = "pipen-mcp"
+version = "0.0.1"
+description = "A pipen CLI plugin to expose processes/pipelines as MCP tools"
+authors = [{name = "pwwang", email = "pwwang@pwwang.com"}]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pipen-cli-run>=1.0.1",
+    "pipen-annotate>=1.0",
+    "mcp[cli]>=1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/pwwang/pipen-mcp"
+Repository = "https://github.com/pwwang/pipen-mcp"
+
+[project.entry-points."pipen_cli"]
+mcp = "pipen_mcp:PipenMcpPlugin"
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pytest-cov>=6",
+    "pytest-xdist>=3",
+    "pytest-forked>=1",
+]
+
+[tool.uv]
+prerelease = "if-necessary-or-explicit"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.black]
+line-length = 88
+target-version = ['py310', 'py311', 'py312']
+
+[tool.pytest.ini_options]
+addopts = "-vv -n auto -p no:asyncio --cov=pipen_mcp --cov-report xml:.coverage.xml --cov-report term-missing"
+filterwarnings = ["ignore:.*use of fork\\(\\) may lead to deadlocks in the child.*"]
+console_output_style = "progress"
+
+[tool.coverage.run]
+branch = true
+parallel = true
+concurrency = ["multiprocessing", "thread"]
+source = ["pipen_mcp"]
+
+[tool.coverage.report]
+exclude_lines = ["pragma: no cover"]
+
+[tool.pyright]
+ignore = [ "tests/**" ]
