@@ -15,7 +15,7 @@ pip install pipen-mcp
 `pipen-mcp` requires Python ≥ 3.10 and depends on:
 - [`pipen-cli-run`](https://github.com/pwwang/pipen-cli-run) ≥ 1.0.1
 - [`pipen-annotate`](https://github.com/pwwang/pipen-annotate) ≥ 1.0
-- [`mcp`](https://github.com/modelcontextprotocol/python-sdk) ≥ 1.0
+- [`mcp[cli]`](https://github.com/modelcontextprotocol/python-sdk) ≥ 2.0
 
 ## Usage
 
