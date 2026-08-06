@@ -1,11 +1,11 @@
-"""Builds a FastMCP server from pipen Proc/ProcGroup entry points."""
+"""Builds an MCPServer from pipen Proc/ProcGroup entry points."""
 from __future__ import annotations
 
 import asyncio
 from asyncio.subprocess import PIPE
 from typing import Annotated, Any
 
-from mcp.server.fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer
 from pydantic import Field
 
 from .introspect import (
@@ -25,15 +25,11 @@ def _load_nsmod(entry_points: dict, ns: str) -> Any | None:
     return epoint
 
 
-def build_server(
-    entry_points: dict,
-    host: str = "127.0.0.1",
-    port: int = 8520,
-) -> FastMCP:
-    """Build a FastMCP server with 4 static discovery + execution tools."""
+def build_server(entry_points: dict) -> MCPServer:
+    """Build an MCPServer with 4 static discovery + execution tools."""
     from pipen_cli_run.entry import get_short_summary
 
-    mcp = FastMCP("pipen-mcp", host=host, port=port)
+    mcp = MCPServer("pipen-mcp")
 
     # ------------------------------------------------------------------
     # Tool 1 — list namespaces

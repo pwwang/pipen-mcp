@@ -9,7 +9,7 @@ requires-python = ">=3.10"
 dependencies = [
     "pipen-cli-run>=1.0.1",
     "pipen-annotate>=1.0",
-    "mcp[cli]>=1.0",
+    "mcp[cli]>=2.0",
 ]
 
 [project.urls]
@@ -28,7 +28,7 @@ dev = [
 ]
 
 [tool.uv]
-prerelease = "if-necessary-or-explicit"
+prerelease = "allow"
 
 [build-system]
 requires = ["hatchling"]

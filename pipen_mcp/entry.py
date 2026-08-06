@@ -65,12 +65,12 @@ class PipenMcpPlugin(AsyncCLIPlugin):
             else:
                 loaded[ns] = epoint
 
-        server = build_server(loaded, host=args.host, port=args.port)
+        server = build_server(loaded)
 
         transport = args.transport
         if transport == "stdio":
             await server.run_stdio_async()
         elif transport == "sse":
-            await server.run_sse_async()
+            await server.run_sse_async(host=args.host, port=args.port)
         else:
-            await server.run_streamable_http_async()
+            await server.run_streamable_http_async(host=args.host, port=args.port)

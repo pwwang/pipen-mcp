@@ -580,7 +580,7 @@ async def _http_tool_calls(
                 return results
     else:
         url = f"http://{host}:{port}/mcp/"
-        async with streamable_http_client(url) as (read, write, _get_session_id):
+        async with streamable_http_client(url) as (read, write):
             async with ClientSession(read, write) as session:
                 await session.initialize()
                 results = []
@@ -695,7 +695,7 @@ def test_streamable_http_tools_list():
     try:
         async def _list():
             await _wait_for_port("127.0.0.1", port)
-            async with streamable_http_client(f"http://127.0.0.1:{port}/mcp/") as (r, w, _):
+            async with streamable_http_client(f"http://127.0.0.1:{port}/mcp/") as (r, w):
                 async with ClientSession(r, w) as session:
                     await session.initialize()
                     result = await session.list_tools()
