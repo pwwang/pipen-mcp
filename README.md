@@ -1,6 +1,11 @@
-# pipen-mcp
-
-A [pipen](https://github.com/pwwang/pipen) CLI plugin that exposes pipen processes and pipelines as [MCP (Model Context Protocol)](https://modelcontextprotocol.io/) tools, allowing AI assistants to discover and run bioinformatics pipelines.
+<p align="center">
+  <img src="logo.png" width="200" />
+</p>
+<p align="center">
+A <a href="https://github.com/pwwang/pipen">pipen</a>
+  CLI plugin that exposes pipen processes and pipelines as <a href="https://modelcontextprotocol.io/">MCP (Model Context Protocol)</a> tools, allowing AI assistants to discover and run bioinformatics pipelines.
+</p>
+<hr />
 
 ## Overview
 
